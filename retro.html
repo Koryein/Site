@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>:: SYSTEM ::</title>
   <style>
-    /* kept this totally separate from the main stylesheet since the vibe is
-       supposed to be a different thing entirely, old dos terminal look */
     body {
       background: #000;
       color: #33ff33;
@@ -18,25 +16,14 @@
       min-height: 100vh;
       margin: 0;
       text-align: center;
+      padding: 20px 0;
     }
 
     pre {
       font-size: 0.65rem;
       line-height: 1.1;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       color: #33ff33;
-    }
-
-    #score {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
-    }
-
-    canvas {
-      border: 2px solid #33ff33;
-      background: #001100;
-      image-rendering: pixelated;
     }
 
     .blink {
@@ -47,17 +34,72 @@
       50% { opacity: 0; }
     }
 
+    /* the menu screen, just a list you move up and down with arrow keys */
+    #menuScreen {
+      margin-bottom: 10px;
+    }
+
+    #menuScreen p {
+      font-size: 0.9rem;
+      color: #1f8f1f;
+      margin: 4px 0 14px;
+    }
+
+    #menuList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    #menuList li {
+      padding: 4px 0;
+      color: #1f8f1f;
+    }
+
+    #menuList li .hi {
+      color: #0f5f0f;
+      font-size: 0.75rem;
+    }
+
+    #menuList li.selected {
+      color: #33ff33;
+    }
+
+    #menuList li.selected::before {
+      content: '> ';
+    }
+
+    #hud {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    canvas {
+      border: 2px solid #33ff33;
+      background: #001100;
+      image-rendering: pixelated;
+    }
+
+    #gameScreen {
+      display: none;
+    }
+
+    #gameFooter {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: #1f8f1f;
+    }
+
     #backlink {
       margin-top: 18px;
       color: #33ff33;
       font-size: 0.85rem;
     }
 
-    #overlay {
-      position: absolute;
+    #backlink a {
       color: #33ff33;
-      font-size: 1rem;
-      display: none;
     }
   </style>
 </head>
@@ -72,12 +114,29 @@
 |_|  |_|\____/ \____/|_| \_|  |_|  |______\_____|_|  |_|
   </pre>
 
-  <div class="blink">press any arrow key to start</div>
-  <div id="score">SCORE: 0</div>
-  <canvas id="game" width="320" height="320"></canvas>
+  <div id="menuScreen">
+    <p>ARCADE // use up and down, enter to play, esc to come back here</p>
+    <ul id="menuList">
+      <li data-game="snake" class="selected">SNAKE <span class="hi" id="hiSnake"></span></li>
+      <li data-game="pong">PONG <span class="hi" id="hiPong"></span></li>
+      <li data-game="breakout">BREAKOUT <span class="hi" id="hiBreakout"></span></li>
+      <li data-game="tetris">BLOCKS <span class="hi" id="hiTetris"></span></li>
+    </ul>
+  </div>
 
-  <div id="backlink"><a href="index.html" style="color:#33ff33;">&lt; back to the actual site &gt;</a></div>
+  <div id="gameScreen">
+    <div id="hud"></div>
+    <canvas id="game" width="320" height="320"></canvas>
+    <div id="gameFooter">esc = back to menu</div>
+  </div>
 
+  <div id="backlink"><a href="index.html">&lt; back to the actual site &gt;</a></div>
+
+  <script src="js/sound.js"></script>
   <script src="js/snake.js"></script>
+  <script src="js/pong.js"></script>
+  <script src="js/breakout.js"></script>
+  <script src="js/tetris.js"></script>
+  <script src="js/arcade.js"></script>
 </body>
 </html>
