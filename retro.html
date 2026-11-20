@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:: SYSTEM ::</title>
+  <style>
+    /* kept this totally separate from the main stylesheet since the vibe is
+       supposed to be a different thing entirely, old dos terminal look */
+    body {
+      background: #000;
+      color: #33ff33;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    pre {
+      font-size: 0.65rem;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      color: #33ff33;
+    }
+
+    #score {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    canvas {
+      border: 2px solid #33ff33;
+      background: #001100;
+      image-rendering: pixelated;
+    }
+
+    .blink {
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    #backlink {
+      margin-top: 18px;
+      color: #33ff33;
+      font-size: 0.85rem;
+    }
+
+    #overlay {
+      position: absolute;
+      color: #33ff33;
+      font-size: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <pre>
+ __  __  ____   ____  _   _ _______ ______ _____ _    _
+|  \/  |/ __ \ / __ \| \ | |__   __|  ____/ ____| |  | |
+| \  / | |  | | |  | |  \| |  | |  | |__ | |    | |__| |
+| |\/| | |  | | |  | | . ` |  | |  |  __|| |    |  __  |
+| |  | | |__| | |__| | |\  |  | |  | |___| |____| |  | |
+|_|  |_|\____/ \____/|_| \_|  |_|  |______\_____|_|  |_|
+  </pre>
+
+  <div class="blink">press any arrow key to start</div>
+  <div id="score">SCORE: 0</div>
+  <canvas id="game" width="320" height="320"></canvas>
+
+  <div id="backlink"><a href="index.html" style="color:#33ff33;">&lt; back to the actual site &gt;</a></div>
+
+  <script src="js/snake.js"></script>
+</body>
+</html>
