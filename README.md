@@ -6,7 +6,7 @@ upload the files straight to hosting.
 ## Structure
 
 - `index.html` - homepage, lists blog posts
-- `about.html` - about page (bio is still a placeholder, fill that in)
+- `about.html` - about page
 - `blog/` - individual post pages
 - `css/style.css` - all the styling
 - `js/main.js` - small stuff, mainly the footer easter egg trigger
